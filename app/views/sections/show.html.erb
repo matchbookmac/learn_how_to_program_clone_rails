@@ -1,7 +1,18 @@
 <%= content_for(:title, "#{@section.title} | LHTP") %>
 
+<h1 class="page-header">
+  <p>
+    <%= @section.title %>:
+  </p>
+  <div class="btn-group btn-group-sm" role="group">
+    <%= link_to "Back to Sections", sections_path, class: "btn btn-info" %>
+    <%= link_to "Edit #{@section.title}", edit_section_path(@section), class: "btn btn-warning" %>
+    <%= link_to "Destroy #{@section.title}", section_path(@section), class: "btn btn-danger",
+                                  data: {confirm: "Are you sure?",
+                                          method: "delete"}%>
 
-<h1 class="page-header"><%= @section.title %>:</h1>
+  </div>
+</h1>
 
 <% if @section.lessons.any? %>
   <h3>Here are the lessons:</h3>
