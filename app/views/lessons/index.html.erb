@@ -1,7 +1,7 @@
 <%= content_for(:title, "Lessons | LHTP") %>
 
 <% if @lessons.any? %>
-  <h3>Here are the lessons:</h3>
+  <h3 class="page-header">Here are all of teh lessons:</h3>
   <ul>
     <% @lessons.each do |lesson| %>
       <li>
@@ -10,5 +10,5 @@
     <% end %>
   </ul>
 <% else %>
-  <h3>There are no lessons yet :(</h3>
+  <h3 class="page-header">There are no lessons yet :(</h3>
 <% end %>

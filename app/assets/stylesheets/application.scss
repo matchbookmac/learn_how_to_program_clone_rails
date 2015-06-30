@@ -3,3 +3,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 //= require rails_bootstrap_forms
+
+#lesson-nav {
+  position: fixed;
+  z-index: 3000;
+}

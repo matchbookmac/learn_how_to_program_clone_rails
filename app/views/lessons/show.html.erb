@@ -4,7 +4,9 @@
     <%= @lesson.title %>
   </p>
   <div class="btn-group btn-group-sm" role="group">
-    <%= link_to 'Back to Lessons', lessons_path, class: "btn btn-info" %>
+    <% if @lesson.section %>
+      <%= link_to "Back to #{@lesson.section.title}", section_path(@lesson.section), class: "btn btn-info" %>
+    <% end %>
     <%= link_to "Edit #{@lesson.title}", edit_lesson_path(@lesson), class: "btn btn-warning" %>
     <%= link_to "Destroy #{@lesson.title}", lesson_path(@lesson), class: "btn btn-danger",
                                   data: {confirm: "Are you sure?",
@@ -15,16 +17,17 @@
 
 
 <p><%= @lesson.content.html_safe %></p>
-
-<footer>
-  <% if @lesson.next %>
-    <%= link_to lesson_path(@lesson.next), class: "btn btn-info", style: "margin-bottom: 0px; position:fixed; bottom:0;right:0;", id: "next" do %>
-      <i class="glyphicon glyphicon-chevron-right"></i>
+<div id="lesson-nav">
+  <footer >
+    <% if @lesson.next %>
+      <%= link_to lesson_path(@lesson.next), class: "btn btn-info", style: "margin-bottom: 0px; position:fixed; bottom:9.125px;right:9.125px;", id: "next" do %>
+        <i class="glyphicon glyphicon-chevron-right"></i>
+      <% end %>
     <% end %>
-  <% end %>
-  <% if @lesson.previous %>
-    <%= link_to lesson_path(@lesson.previous), class: "btn btn-info", style: "margin-bottom: 0px; position:fixed; bottom:0;left:0;", id: "previous" do %>
-      <i class="glyphicon glyphicon-chevron-left"></i>
+    <% if @lesson.previous %>
+      <%= link_to lesson_path(@lesson.previous), class: "btn btn-info", style: "margin-bottom: 0px; position:fixed; bottom:9.125px;left:9.125px;", id: "previous" do %>
+        <i class="glyphicon glyphicon-chevron-left"></i>
+      <% end %>
     <% end %>
-  <% end %>
-</footer>
+  </footer>
+</div>

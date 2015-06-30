@@ -24,6 +24,7 @@
       <% if Section.all.any? %>
         <li><%= link_to "Add Lesson", new_lesson_path %></li>
       <% end %>
+      <li><%= link_to "View All Lessons", lessons_path %></li>
     </ul>
 
   </div><!-- /.navbar-collapse -->
@@ -35,5 +36,12 @@
   <%= yield %>
 
 </div>
+  <div id="fixme">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+      <div class="container">
+        <h4 class="text-center">&#169;2015, <span style="font-weight: bolder; font-size:1.5em; text-decoration: underline;">®Subcodus™ </span></h4>
+      </div>
+    </nav>
+  </div>
 </body>
 </html>
