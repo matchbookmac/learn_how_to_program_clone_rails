@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe Lesson do
   it { should validate_presence_of :title }
+  it { should belong_to :section }
+  it { should validate_uniqueness_of :lesson_number }
 
   context '#next' do
     it "returns the lesson with the next highest number" do
