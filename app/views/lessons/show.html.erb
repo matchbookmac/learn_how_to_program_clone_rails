@@ -1,0 +1,15 @@
+<%= content_for(:title, "#{@lesson.title} | LHTP") %>
+
+<div class="btn-group btn-group-sm" role="group">
+  <%= link_to 'Back to Lessons', lessons_path, class: "btn btn-info" %>
+  <%= link_to 'Edit Lesson', edit_lesson_path(@lesson), class: "btn btn-warning" %>
+  <%= link_to 'Destroy Lesson', lesson_path(@lesson), class: "btn btn-danger",
+                                data: {confirm: "Are you sure?",
+                                        method: "delete"}%>
+
+</div>
+
+<h3>
+  <%= @lesson.title %>
+</h3>
+<p><%= @lesson.content.html_safe %></p>
