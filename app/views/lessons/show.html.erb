@@ -16,9 +16,13 @@
 
 <footer>
   <% if @lesson.next %>
-    <%= link_to 'Next Lesson', lesson_path(@lesson.next), class: "btn btn-info", style: "margin-bottom: 0px; position:fixed; bottom:0;right:0;" %>
+    <%= link_to lesson_path(@lesson.next), class: "btn btn-info", style: "margin-bottom: 0px; position:fixed; bottom:0;right:0;", id: "next" do %>
+      <i class="glyphicon glyphicon-chevron-right"></i>
+    <% end %>
   <% end %>
   <% if @lesson.previous %>
-    <%= link_to 'Previous Lesson', lesson_path(@lesson.previous), class: "btn btn-info", style: "margin-bottom: 0px; position:fixed; bottom:0;left:0;" %>
+    <%= link_to lesson_path(@lesson.previous), class: "btn btn-info", style: "margin-bottom: 0px; position:fixed; bottom:0;left:0;", id: "previous" do %>
+      <i class="glyphicon glyphicon-chevron-left"></i>
+    <% end %>
   <% end %>
 </footer>
