@@ -13,3 +13,12 @@
   <%= @lesson.title %>
 </h3>
 <p><%= @lesson.content.html_safe %></p>
+
+<footer>
+  <% if @lesson.next %>
+    <%= link_to 'Next Lesson', lesson_path(@lesson.next), class: "btn btn-info", style: "margin-bottom: 0px; position:fixed; bottom:0;right:0;" %>
+  <% end %>
+  <% if @lesson.previous %>
+    <%= link_to 'Previous Lesson', lesson_path(@lesson.previous), class: "btn btn-info", style: "margin-bottom: 0px; position:fixed; bottom:0;left:0;" %>
+  <% end %>
+</footer>
