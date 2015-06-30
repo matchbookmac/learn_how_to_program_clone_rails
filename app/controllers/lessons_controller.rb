@@ -15,8 +15,9 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(lesson_params)
     if @lesson.save
+      @section = Section.find(params[:lesson][:section_id])
       flash[:notice] = "Lesson added!"
-      redirect_to lessons_path
+      redirect_to section_path(@section)
     else
       render :new
     end
@@ -38,13 +39,14 @@ class LessonsController < ApplicationController
 
   def destroy
     @lesson = Lesson.find(params[:id])
+    @section = @lesson.section
     @lesson.destroy
-    redirect_to lessons_path
+    redirect_to section_path(@section)
   end
 
   private
 
   def lesson_params
-    params.require(:lesson).permit(:title, :content, :lesson_number)
+    params.require(:lesson).permit(:title, :content, :lesson_number, :section_id)
   end
 end

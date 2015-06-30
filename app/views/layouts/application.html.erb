@@ -20,10 +20,9 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
-      <li>
-        <%= link_to "Add Lesson", new_lesson_path %>
-      </li>
-
+      <% if Section.all.any? %>
+        <li><%= link_to "Add Lesson", new_lesson_path %></li>
+      <% end %>
     </ul>
 
   </div><!-- /.navbar-collapse -->

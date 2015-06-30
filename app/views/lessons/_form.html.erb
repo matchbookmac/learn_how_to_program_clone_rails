@@ -1,10 +1,14 @@
 <%= render 'layouts/errors', object: @lesson  %>
 
 
-
-<%= bootstrap_form_for(@lesson) do |f|  %>
-  <%= f.text_field :title %>
-  <%= f.text_area :content %>
-  <%= f.number_field :lesson_number %>
-  <%= f.submit data: { disable_with: "Submitting..."}, class: "btn btn-success btn-block" %>
-<% end  %>
+<% if Section.all.any? %>
+  <%= bootstrap_form_for(@lesson) do |f|  %>
+    <%= f.text_field :title %>
+    <%= f.text_area :content %>
+    <%= f.number_field :lesson_number %>
+    <%= f.collection_select(:section_id, Section.all, :id, :title, { prompt: "Please select section" }) %>
+    <%= f.submit data: { disable_with: "Submitting..."}, class: "btn btn-success btn-block" %>
+  <% end  %>
+<% else %>
+  <h3 class="alert alert-danger">There aren't any sections yet, please add a section before adding a lesson</h3>
+<% end %>

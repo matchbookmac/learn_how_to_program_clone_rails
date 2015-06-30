@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-
-
 describe "The Edit lesson path" do
   it "edits a lesson" do
-    lesson = Lesson.create(title: 'lesson', content: 'stuff', lesson_number: 1)
+    section = Section.create(title: "Rails")
+    lesson = Lesson.create(title: 'lesson', content: 'stuff', lesson_number: 1, section_id: section.id)
     visit lesson_path(lesson)
     click_on "Edit Lesson"
     fill_in 'Content', with: "more stuff"
@@ -13,7 +12,8 @@ describe "The Edit lesson path" do
   end
 
   it "gives error when no content is entered" do
-    lesson = Lesson.create(title: 'lesson', content: 'stuff', lesson_number: 1)
+    section = Section.create(title: "Rails")
+    lesson = Lesson.create(title: 'lesson', content: 'stuff', lesson_number: 1, section_id: section.id)
     visit lesson_path(lesson)
     click_on "Edit Lesson"
     fill_in 'Content', with: ''

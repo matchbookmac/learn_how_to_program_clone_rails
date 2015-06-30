@@ -1,0 +1,8 @@
+<%= render 'layouts/errors', object: @section  %>
+
+
+
+<%= bootstrap_form_for(@section) do |f|  %>
+  <%= f.text_field :title %>
+  <%= f.submit data: { disable_with: "Submitting..."}, class: "btn btn-success btn-block" %>
+<% end  %>

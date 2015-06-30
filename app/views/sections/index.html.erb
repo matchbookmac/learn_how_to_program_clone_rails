@@ -1,0 +1,14 @@
+<%= content_for(:title, "Sections | LHTP") %>
+
+<% if @sections.any? %>
+  <h3>Here are the sections:</h3>
+  <ul>
+    <% @sections.each do |section| %>
+      <li>
+        <%= link_to section.title, section_path(section) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <h3>There are no sections yet :(</h3>
+<% end %>
