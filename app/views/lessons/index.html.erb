@@ -1,14 +1,46 @@
 <%= content_for(:title, "Lessons | LHTP") %>
 
-<% if @lessons.any? %>
-  <h3 class="page-header">Here are all of teh lessons:</h3>
-  <ul>
-    <% @lessons.each do |lesson| %>
-      <li>
-        <%= link_to lesson.title, lesson_path(lesson) %>
-      </li>
+<% if Section.all.any? %>
+  <% Section.all.in_groups_of(2).each do |sections| %>
+    <div class="row clearfix">
+      <% sections.each do |section| %>
+      <div class="col-md-6">
+        <div class="well">
+
+          <p class="lead">
+            <%= section.title %>
+          </p>
+          <% if section.lessons.any? %>
+            <ul>
+              <% section.lessons.each do |lesson| %>
+                <li>
+                  <%= link_to lesson.title, lesson_path(lesson) %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <h3 class="page-header">There are no lessons yet :(</h3>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
     <% end %>
-  </ul>
-<% else %>
-  <h3 class="page-header">There are no lessons yet :(</h3>
-<% end %>
+  <% end %>
+<div class="row clearfix">
+  <div class="col-md-6">
+    <div class="well">
+      <p class="lead">
+
+       Loose Lessons
+      </p>
+      <% Lesson.all.each do |lesson| %>
+        <% unless lesson.section %>
+          <li>
+            <%= link_to lesson.title, lesson_path(lesson) %>
+          </li>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
