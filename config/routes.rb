@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: "sections#index"
   resources :sections
-  resources :lessons, except: [:index]
-  resources :lessons, as: :lessons, path: '/table_of_contents', only: :index
+  resources :lessons
 
-  # match "/table_of_contents" => "lessons#index", via: :get
+  get 'table-of-contents' => 'lessons#index', :as => 'table_of_contents'
+  get 'table_of_contents' => redirect('table-of-contents')
 end

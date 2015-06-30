@@ -2,6 +2,9 @@ class LessonsController < ApplicationController
 
   def index
     @lessons = Lesson.all
+    if request.path == '/lessons'
+      redirect_to table_of_contents_path
+    end
   end
 
   def new
